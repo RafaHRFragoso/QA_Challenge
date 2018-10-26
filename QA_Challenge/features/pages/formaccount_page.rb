@@ -21,8 +21,9 @@ class FormAccount <SitePrism::Page
     element :aliasaddressField, '#alias'
     element :submitButton, '#submitAccount'
 
-    $userfirstname = Faker::Name.first_name
-    $userlastname = Faker::Name.last_name
+    $userfirstname = (Faker::Name.first_name)
+    $userlastname = (Faker::Name.last_name)
+    $userPassword = (Faker::Internet.password(8,8))
 
     def checkMrRadio
         mrRadio.choose
@@ -32,32 +33,68 @@ class FormAccount <SitePrism::Page
         mrsRadio.choose
     end
 
-    def fillFirstName(userfirstname)  
-        userfirstname = $userfirstname
-        puts userfirstname  
-        firstnameField.set (userfirstname)
+    def fillFirstName
+        @userfirstname = $userfirstname
+        puts @userfirstname 
+        firstnameField.set(@userfirstname)
     end
 
-    def fillLastName(userlastname)  
-        userlastname = $userlastname
-        puts userlastname      
-        lastnameField.set ($userlastname)
+    def fillLastName
+        @userlastname = $userlastname
+        puts @userlastname 
+        lastnameField.set(@userlastname)
     end
 
     def fillPassword
-        passwordField.set (Faker::Internet.password(8))
-        puts passwordField
+        @userPassword = $userPassword
+        puts @userPassword
+        passwordField.set(@userPassword)        
     end
 
     def selectDate
-        daysSelect.select '25'
-        monthsSelect.select 'October'
-        yearsSelect.select '2018'
+        t = Time.now
+        daysSelect.select t.strftime("%d")      
+        monthsSelect.select t.strftime("%B")
+        yearsSelect.select t.strftime("%Y")
     end
 
     def checkCheckboxes
         newsCheckbox.check
         offersCheckbox.check
     end
+=begin
+    def fillFirstNameAddress
+        @userfirstnameaddress = $userfirstname
+        puts @userfirstnameaddress 
+        firstnameaddress.set(@userfirstnameaddress)
+    end
+
+    def fillLastNameNameAddress
+        @userlastnameaddress = $userlastname
+        puts @userlastnameaddress 
+        lastnameaddress.set(@userlastname)
+    end
+=end
+    def userAddress
+        @userfirstnameaddress = $userfirstname
+        puts @userfirstnameaddress 
+        firstnameaddress.set(@userfirstnameaddress)
+
+        @userlastnameaddress = $userlastname
+        puts @userlastnameaddress 
+        lastnameaddress.set(@userlastname)
+
+        addressField.set(Faker::Address.street_address)
+        cityField.set(Faker::Address.city)
+        stateSelect.select(Faker::Address.state)
+        postcodeFied.set(Faker::Address.zip_code)
+        countrySelect.select 'United States'
+        aliasaddressField.set(Faker::Address.street_address)
+    end
+
+    def fillPhoneNumber
+        phoneField.set(Faker::PhoneNumber.cell_phone)
+    end
+
 
 end
