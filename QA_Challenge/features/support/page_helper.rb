@@ -6,8 +6,8 @@ module Pages
         @home ||= HomePage.new
     end
     
-    def signin
-        @signin ||= SignInPage.new
+    def authentication
+        @authentication ||= AuthenticationPage.new
     end
 
     def formaccount

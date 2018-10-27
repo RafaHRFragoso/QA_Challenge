@@ -46,9 +46,9 @@ class FormAccount <SitePrism::Page
     end
 
     def fillPassword
-        @userPassword = $userPassword
-        puts @userPassword
-        passwordField.set(@userPassword)        
+        userPassword = $userPassword
+        puts userPassword
+        passwordField.set(userPassword)        
     end
 
     def selectDate
@@ -62,19 +62,7 @@ class FormAccount <SitePrism::Page
         newsCheckbox.check
         offersCheckbox.check
     end
-=begin
-    def fillFirstNameAddress
-        @userfirstnameaddress = $userfirstname
-        puts @userfirstnameaddress 
-        firstnameaddress.set(@userfirstnameaddress)
-    end
 
-    def fillLastNameNameAddress
-        @userlastnameaddress = $userlastname
-        puts @userlastnameaddress 
-        lastnameaddress.set(@userlastname)
-    end
-=end
     def userAddress
         @userfirstnameaddress = $userfirstname
         puts @userfirstnameaddress 
@@ -87,7 +75,7 @@ class FormAccount <SitePrism::Page
         addressField.set(Faker::Address.street_address)
         cityField.set(Faker::Address.city)
         stateSelect.select(Faker::Address.state)
-        postcodeFied.set(Faker::Address.zip_code)
+        postcodeFied.set(Faker::Number.number(5))
         countrySelect.select 'United States'
         aliasaddressField.set(Faker::Address.street_address)
     end
@@ -96,5 +84,16 @@ class FormAccount <SitePrism::Page
         phoneField.set(Faker::PhoneNumber.cell_phone)
     end
 
+    def clicksubmitButton
+        submitButton.click
+    end
+
+    def validateNewAccess
+        @userfirstname = $userfirstname
+        @userlastname = $userlastname
+        @username = @userfirstname+' '+ @userlastname
+        puts @username
+        page.assert_text(@username)
+    end
 
 end

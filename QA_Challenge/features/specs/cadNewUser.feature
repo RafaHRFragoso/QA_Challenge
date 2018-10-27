@@ -1,5 +1,7 @@
 #language:pt
 
+
+@newUser
 Funcionalidade: Cadastrar Novo Usuário 
 
     #Contexto: Página Inicial
@@ -7,6 +9,8 @@ Funcionalidade: Cadastrar Novo Usuário
     #    Então a logo do sistema deve ser exibida
     @home_page        
     Cenario: Cadastrar Novo Usuário         
-        Quando o usuário acessa a tela de Sign In
-        E submete um email valida para um novo cadastro
-        Então o usuário preenche o formulario de cadastro
+        Dado que o usuário acesse a tela de Autenticação
+        Quando submete um email valido para um novo cadastro
+        Quando preenche o formulario de cadastro
+        E submete o cadastrado
+        Então o novo usuário deve ser cadastrado com sucesso

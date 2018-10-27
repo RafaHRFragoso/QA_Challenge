@@ -1,23 +1,29 @@
-Quando("o usuário acessa a tela de Sign In") do    
+Dado("que o usuário acesse a tela de Autenticação") do    
     home.accessSignin
     page.assert_text('Authentication')
   end
   
-  Quando("submete um email valida para um novo cadastro") do
-    user_email = Faker::Internet.safe_email('QA_Challange')
-    puts user_email
-    fill_in "email_create", with: user_email
-    signin.clickCreateAccount
-    page.assert_text('Create an account')
+  Quando("submete um email valido para um novo cadastro") do
+    authentication.submitNewEmail
+    authentication.clickCreateAccount
+
   end
   
-  Então("o usuário preenche o formulario de cadastro") do
-    #formaccount.checkMrRadio
-    #formaccount.fillFirstName
-    #formaccount.fillLastName
-    #formaccount.fillPassword
+  Quando("preenche o formulario de cadastro") do
+    formaccount.checkMrRadio
+    formaccount.fillFirstName
+    formaccount.fillLastName
+    formaccount.fillPassword
     formaccount.selectDate
-    #formaccount.checkCheckboxes
-    #formaccount.userAddress
-    #formaccount.fillPhoneNumber
+    formaccount.checkCheckboxes
+    formaccount.userAddress
+    formaccount.fillPhoneNumber
+  end
+
+  Quando("submete o cadastrado") do
+    formaccount.clicksubmitButton
+  end
+
+  Então("o novo usuário deve ser cadastrado com sucesso") do
+    formaccount.validateNewAccess
   end
