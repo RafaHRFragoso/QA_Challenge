@@ -13,4 +13,8 @@ module Pages
     def formaccount
         @formaccount ||= FormAccount.new
     end
+
+    def buyitens
+        @buyitens ||= BuyItensPage.new
+    end
 end    

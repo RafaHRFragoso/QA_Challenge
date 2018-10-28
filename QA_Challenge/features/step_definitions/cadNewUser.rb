@@ -6,7 +6,6 @@ Dado("que o usuário acesse a tela de Autenticação") do
   Quando("submete um email valido para um novo cadastro") do
     authentication.submitNewEmail
     authentication.clickCreateAccount
-
   end
   
   Quando("preenche o formulario de cadastro") do

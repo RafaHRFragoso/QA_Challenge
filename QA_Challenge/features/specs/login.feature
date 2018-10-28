@@ -1,6 +1,5 @@
 #language:pt
 
-
 @login @home_page
 Funcionalidade: Realizar Login
 
@@ -28,9 +27,8 @@ Funcionalidade: Realizar Login
             |                          | 7p80Nl2d  | An email address required. |
             | qa_challange@example.net |           | Password is required.      |
             |                          |           | An email address required. |
-    @temp
+    @validate_logout
     Cenario: Validar Logout
         Quando o usuário logar com um email e senha previamente cadastrados
         E realizar o logout do sistema
         Então o usuário deverá ser redirecionado para a homepage 
-

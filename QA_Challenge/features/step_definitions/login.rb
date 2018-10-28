@@ -35,5 +35,5 @@ Quando("realizar o logout do sistema") do
   end
   
   Então("o usuário deverá ser redirecionado para a homepage") do
-    
+    expect(page).to have_current_path('http://automationpractice.com/index.php')     
   end
