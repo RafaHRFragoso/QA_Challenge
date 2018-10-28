@@ -12,7 +12,7 @@ Funcionalidade: Realizar Login
         Então o sistema deverá autenticar o usuário com sucesso
 
     @logout
-    Cenario: Realizar Login de Usuário com My Wishlis
+    Cenario: Realizar Login de Usuário com itens no My Wishlis
         Quando um usuário que possua ao menos um item no My Wishlis realizar login    
         Então o sistema deverá redirecionar o usuário para a tela de My Wishlis
 
@@ -27,6 +27,7 @@ Funcionalidade: Realizar Login
             |                          | 7p80Nl2d  | An email address required. |
             | qa_challange@example.net |           | Password is required.      |
             |                          |           | An email address required. |
+            
     @validate_logout
     Cenario: Validar Logout
         Quando o usuário logar com um email e senha previamente cadastrados

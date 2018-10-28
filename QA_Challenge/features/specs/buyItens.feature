@@ -1,6 +1,5 @@
 #language:pt
 
-
 @buyitens @home_page
 Funcionalidade: Realizar Compra de Itens 
 
