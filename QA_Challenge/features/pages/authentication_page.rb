@@ -9,7 +9,6 @@ class AuthenticationPage < SitePrism::Page
 
     def submitNewEmail
         @new_useremail = Faker::Internet.safe_email
-        puts @new_useremail
         newuseremeilField.set(@new_useremail)    
     end
 
@@ -33,7 +32,6 @@ class AuthenticationPage < SitePrism::Page
     end
 
     def validateCommonLogin(existsUser)        
-        puts existsUser
         page.assert_text(@existsUser)
     end
 

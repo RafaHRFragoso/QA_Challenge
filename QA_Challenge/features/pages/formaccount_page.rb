@@ -35,19 +35,16 @@ class FormAccount <SitePrism::Page
 
     def fillFirstName
         @userfirstname = $userfirstname
-        puts @userfirstname 
         firstnameField.set(@userfirstname)
     end
 
     def fillLastName
         @userlastname = $userlastname
-        puts @userlastname 
         lastnameField.set(@userlastname)
     end
 
     def fillPassword
         userPassword = $userPassword
-        puts userPassword
         passwordField.set(userPassword)        
     end
 
@@ -65,11 +62,9 @@ class FormAccount <SitePrism::Page
 
     def userAddress
         @userfirstnameaddress = $userfirstname
-        puts @userfirstnameaddress 
         firstnameaddress.set(@userfirstnameaddress)
 
         @userlastnameaddress = $userlastname
-        puts @userlastnameaddress 
         lastnameaddress.set(@userlastname)
 
         addressField.set(Faker::Address.street_address)
@@ -92,7 +87,6 @@ class FormAccount <SitePrism::Page
         @userfirstname = $userfirstname
         @userlastname = $userlastname
         @username = @userfirstname+' '+ @userlastname
-        puts @username
         page.assert_text(@username)
     end
 

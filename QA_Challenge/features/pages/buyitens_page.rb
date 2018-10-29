@@ -40,7 +40,6 @@ class BuyItensPage < SitePrism::Page
         price = page.find('#total_price')
         $total_price = price.text
         @total_price = $total_price
-        puts (@total_price)
         shoppingcartButton.click  
         page.assert_text('Addresses')
         checkoutAddress.click
@@ -57,7 +56,6 @@ class BuyItensPage < SitePrism::Page
     def validatePurchase
         t = Time.now
         @currentDay = t.strftime("%m/%d/%Y")     
-        puts @currentDay 
         nameUser.click
         orderHistory.click
         page.assert_text('Order history')
@@ -71,7 +69,6 @@ class BuyItensPage < SitePrism::Page
 
     def fillItemsQuantity
         @qntt = Faker::Number.between(2, 5)
-        print @qntt
         quantityItensField.set(@qntt) 
     end
     
